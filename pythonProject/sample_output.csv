@@ -1,0 +1,8 @@
+Queue name,Producer Name,Consumer Name,Primary app full name,Primary app disp,Primary app role,Primary app id queue type,Primary neighbourhood,Primary hosting type,primary data classification,Primary enterprise critical payment application,primary psi,primary publicly accessible,primary tract,q type,queue manager name,app id,lob,cluster name,cluster name list,def persistence,def put response,inhibit get,inhibit put,remote queue manager name,remote queue name,usage,emit q name,neighbourhood
+Q.A,PROD,CONS,,,,,N1,,,,,,,REMOTE,QM1,QM1,,,,,,,,QM2,,QUEUE,,
+Q.B,PROD,CONS,,,,,N1,,,,,,,REMOTE,QM1,QM1,,,,,,,,QM3,,QUEUE,,
+Q.C,PROD,CONS,,,,,N2,,,,,,,REMOTE,QM1,QM1,,,,,,,,QM3,,QUEUE,,
+QM1.to.QM2,,,,,,,,,,,,,,CHANNEL,QM1,,,,,,,,,QM2,,CHANNEL_SENDER,,
+QM2.from.QM1,,,,,,,,,,,,,,CHANNEL,QM2,,,,,,,,,QM1,,CHANNEL_RECEIVER,,
+QM1.to.QM3,,,,,,,,,,,,,,CHANNEL,QM1,,,,,,,,,QM3,,CHANNEL_SENDER,,
+QM3.from.QM1,,,,,,,,,,,,,,CHANNEL,QM3,,,,,,,,,QM1,,CHANNEL_RECEIVER,,

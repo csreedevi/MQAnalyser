@@ -1,0 +1,116 @@
+{
+  "as_is": {
+    "assumed_channel_links_undirected": [
+      [
+        "QM1",
+        "QM2"
+      ],
+      [
+        "QM1",
+        "QM3"
+      ]
+    ],
+    "complexity": {
+      "directed_channel_count": 4,
+      "weighted_hops_total": 3.0,
+      "max_fan_out": 2,
+      "cycles": 0,
+      "object_count": 3,
+      "score": 10.75,
+      "weights": {
+        "w_channels": 1.0,
+        "w_hops": 1.5,
+        "w_fan": 0.75,
+        "w_cycles": 2.0,
+        "w_objects": 0.25
+      }
+    }
+  },
+  "target": {
+    "proposed_channel_links_undirected": [
+      [
+        "QM1",
+        "QM2"
+      ],
+      [
+        "QM1",
+        "QM3"
+      ]
+    ],
+    "complexity": {
+      "directed_channel_count": 4,
+      "weighted_hops_total": 3.0,
+      "max_fan_out": 2,
+      "cycles": 0,
+      "object_count": 3,
+      "score": 10.75,
+      "weights": {
+        "w_channels": 1.0,
+        "w_hops": 1.5,
+        "w_fan": 0.75,
+        "w_cycles": 2.0,
+        "w_objects": 0.25
+      }
+    }
+  },
+  "constraints": {
+    "ownership_violations_before_fix": [
+      {
+        "app_id": "QM1",
+        "queue_managers_seen": [
+          "QM1",
+          "QM2"
+        ],
+        "violation": "app spans multiple queue managers"
+      }
+    ],
+    "ownership_violations_after_fix": [],
+    "auto_fix_applied": {
+      "tie_breaker": "sorted",
+      "app_to_majority_qm": {
+        "QM1": "QM1"
+      }
+    },
+    "enforced": [
+      "one queue manager per application (enforced at planning time; auto-fix via majority rule when violated)",
+      "application connects only to its own queue manager (indirectly enforced by the app_id -> queue manager ownership mapping)",
+      "deterministic channel naming (sender/receiver pair) for introduced links"
+    ]
+  },
+  "dedupe": {
+    "duplicate_rows_count": 0
+  },
+  "anomalies": {
+    "orphan_candidates": []
+  },
+  "decision_explanation": [
+    "Target channels are introduced only between queue managers that participate in observed producer->consumer demands (secure-by-default).",
+    "For each demand-connected component, we pick an acyclic (tree) topology to avoid cycles and keep channel count minimal.",
+    "We evaluate star vs maximum-spanning-tree candidates using the same quantitative complexity metric, selecting the lowest-score topology."
+  ],
+  "component_decisions": [
+    {
+      "component_nodes": [
+        "QM1",
+        "QM2",
+        "QM3"
+      ],
+      "selected_links_undirected": [
+        [
+          "QM1",
+          "QM2"
+        ],
+        [
+          "QM1",
+          "QM3"
+        ]
+      ],
+      "selected_meta": {
+        "type": "star",
+        "hub": "QM1"
+      },
+      "selected_component_score": 10.75,
+      "candidate_count": 4
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+Queue name	Producer Name	Consumer Name	Primary app full name	Primary app disp	Primary app role	Primary app id queue type	Primary neighbourhood	Primary hosting type	primary data classification	Primary enterprise critical payment application	primary psi	primary publicly accessible	primary tract	q type	queue manager name	app id	lob	cluster name	cluster name list	def persistence	def put response	inhibit get	inhibit put	remote queue manager name	remote queue name	usage	emit q name	neighbourhood
+Q.A	PROD	CONS			Producer	Remote	Lending							REMOTE	QM1	Appid1		7	7	No	Synchronous	0	Enabled	RQM1	XQname	Normal		
+Q.A	PROD	CONS			Consumer	Remote	Banking							REMOTE	QM1	Appid2		7	7	No	Synchronous	0	Enabled	RQM1	XQname	Normal		
+Q.B	PROD	CONS			Producer	Remote;Alias	Lending							Alias	QM2	Appid1		7	7	Yes	Synchronous	Enabled	Enabled	7	7	Normal		
